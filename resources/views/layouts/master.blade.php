@@ -5,7 +5,7 @@
     </head>
     <body>
         <div class="container">
-            @yield('content')  <?php // hook for getting the body content?>
+            @yield('content')  <?php // hook for getting the body content ?>
         </div>
     </body>
 </html>
