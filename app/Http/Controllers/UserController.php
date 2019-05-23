@@ -15,6 +15,12 @@ class UserController extends Controller
 
     public function postRegister(Request $request) //handle request when register is clicked
     {
+        $this->validate($request, [ //define the input validation rules 
+            'email' => 'email|unique:users',
+            'first_name' => 'required|max:120',
+            'password' => 'required|min:6'
+        ]);
+
         $email = $request['email']; //get email form field form request array etc...
         $first_name = $request['first_name'];
         $password = bcrypt($request['password']);  //hash password
@@ -33,6 +39,12 @@ class UserController extends Controller
 
     public function postLogin(Request $request) //handle request when login is clicked
     {
+        $this->validate($request, [ //define the input validation rules 
+            'email' => 'email|unique:users',
+            'first_name' => 'required|max:120',
+            'password' => 'required|min:6'
+        ]);
+
         if (Auth::attempt(['email' => $request['email'], 'password' => $request['password']])) //try to login user
         {
             return redirect()->route('dashboard'); //load dashboard
