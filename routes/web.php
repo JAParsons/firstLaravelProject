@@ -19,3 +19,13 @@ Route::post('/register',[
     'uses' => 'UserController@postRegister',
     'as' => 'register'
 ]);
+
+Route::post('/login',[
+    'uses' => 'UserController@postLogin',
+    'as' => 'login'
+]);
+
+Route::get('/dashboard',[
+    'uses' => 'UserController@getDashboard',
+    'as' => 'dashboard'
+]);

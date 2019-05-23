@@ -5,6 +5,7 @@
 @endsection
 
 @section('content') <?php //define the body content to be inserted in to @yield('content') ?>
+<br><br>
     <div class="row">
         <div class="col-md-6">
             <h3>Register</h3>
@@ -28,7 +29,7 @@
 
         <div class="col-md-6">
             <h3>Login</h3>
-            <form action="#" method="post">
+            <form action="{{route('login')}}" method="post">
                 <div class="form-group">
                     <label for="email">Your E-mail</label>
                     <input class="form-control" type="text" name="email" id="email"></input>
@@ -42,6 +43,7 @@
                     <input class="form-control" type="password" name="password" id="password"></input>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
+                <input type="hidden" name="_token" value="{{Session::token()}}"> <?php //protection against CSRF by fetching session token?>
             </form>
         </div>
         
