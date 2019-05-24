@@ -9,7 +9,7 @@
 @section('content')<?php //display any and all errors ?>
     @if(count($errors) > 0)
         <div class="row">
-            <div class="col-md-4 col-md-offset-4">
+            <div class="col-md-4">
                 <ul>
                     <br>
                     @foreach($errors->all() as $error)

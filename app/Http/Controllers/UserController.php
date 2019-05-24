@@ -40,9 +40,8 @@ class UserController extends Controller
     public function postLogin(Request $request) //handle request when login is clicked
     {
         $this->validate($request, [ //define the input validation rules 
-            'email' => 'email|unique:users',
-            'first_name' => 'required|max:120',
-            'password' => 'required|min:6'
+            'email' => 'required|email',
+            'password' => 'required'
         ]);
 
         if (Auth::attempt(['email' => $request['email'], 'password' => $request['password']])) //try to login user
