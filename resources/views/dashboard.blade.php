@@ -1,6 +1,8 @@
 @extends('layouts.master')
 
 @section('content')
+<br>
+    @include('includes.message')
 <br><br>
     <section class="row new-post">
         <div class="col-md-8 offset-md-2">

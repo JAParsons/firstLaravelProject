@@ -7,18 +7,7 @@
 @section('content') <?php //define the body content to be inserted in to @yield('content') ?>
 
 @section('content')<?php //display any and all errors ?>
-    @if(count($errors) > 0)
-        <div class="row">
-            <div class="col-md-4">
-                <ul>
-                    <br>
-                    @foreach($errors->all() as $error)
-                        <li>{{$error}}</li>
-                    @endforeach
-                </ul>
-            </div>
-        </div>
-    @endif
+@include('includes.message')
 
     <br><br>
 
