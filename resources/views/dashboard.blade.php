@@ -5,11 +5,12 @@
     <section class="row new-post">
         <div class="col-md-8 offset-md-2">
             <header><h3>What's on you mind?</h3></header>
-            <form action="#">
+            <form action="{{route('post.create')}}" method="post">
                 <div class="form-group">
-                    <textarea class="form-control" name="new-post" id ="newpost" rows="5" placeholder="Your Post"></textarea>
+                    <textarea class="form-control" name="body" id ="newpost" rows="5" placeholder="Your Post"></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">Create Post</button>
+                <input type="hidden" name="_token" value="{{Session::token()}}"> <?php //protection against CSRF by fetching session token?>
             </form>
         </div>
     </section>
