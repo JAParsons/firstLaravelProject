@@ -48,4 +48,10 @@ class UserController extends Controller
             return redirect()->back(); //else go back to welcome page
         }
     }
+
+    public function getLogout()
+    {
+        Auth::logout(); //log user out
+        return redirect()->route('home');
+    }
 }

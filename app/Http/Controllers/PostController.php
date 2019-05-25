@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
     public function getDashboard()
     {
-        $posts = Post::all(); //fetch all posts
+        $posts = Post::orderby('created_at', 'desc')->get(); //fetch all posts in order of most recent
 
         return view('dashboard', ['posts' => $posts]);
     }
@@ -31,5 +32,16 @@ class PostController extends Controller
         }
 
         return redirect()->route('dashboard')->with(['message' => $message]); //redirect to the dashboard and display relevant message
+    }
+
+    public function getDeletePost($post_id)
+    {
+        $post = Post::where('id', $post_id)->first(); //get post with specified id
+        if(Auth::user()!= $post->user)
+        {
+            return redirect()->back();
+        }
+        $post->delete();
+        return redirect()->route('dashboard')->with(['message' => 'Successfully deleted!']);
     }
 }
