@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+    public function getDashboard()
+    {
+        $posts = Post::all(); //fetch all posts
+
+        return view('dashboard', ['posts' => $posts]);
+    }
+
     public function postCreate(Request $request)
     {
         //Validation

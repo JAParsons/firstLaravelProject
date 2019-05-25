@@ -20,10 +20,11 @@
     <section class="row posts">
         <div class="col-md-8  offset-md-2">
             <header><h3>People say words...</h3></header>
+            @foreach($posts as $post)
             <article class="post">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p>{{$post->body}}</p>
                 <div class="info">
-                    Posted by John on 23 May 2019
+                    Posted by {{$post->user->first_name}} {{$post->created_at->diffForHumans()}} <?php //{{$post->created_at->format('m/d/Y')}}?>
                 </div>
                 <div class="interaction">
                     <a href="#"> Like</a>
@@ -32,19 +33,8 @@
                     <a href="#">Delete</a>
                 </div>
             </article>
+            @endforeach
             <br><br>
-            <article class="post">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                <div class="info">
-                    Posted by John on 23 May 2019
-                </div>
-                <div class="interaction">
-                    <a href="#"> Like</a>
-                    <a href="#">Dislike</a>
-                    <a href="#">Edit</a>
-                    <a href="#">Delete</a>
-                </div>
-            </article>
         </div>
     </section>
 @endsection

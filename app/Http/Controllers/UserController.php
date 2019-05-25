@@ -8,11 +8,6 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    public function getDashboard()
-    {
-        return view('dashboard');
-    }
-
     public function postRegister(Request $request) //handle request when register is clicked
     {
         $this->validate($request, [ //define the input validation rules 

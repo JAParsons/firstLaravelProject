@@ -26,7 +26,7 @@ Route::post('/login',[
 ]);
 
 Route::get('/dashboard',[
-    'uses' => 'UserController@getDashboard',
+    'uses' => 'PostController@getDashboard',
     'as' => 'dashboard',
     'middleware' => 'auth'
 ]);
