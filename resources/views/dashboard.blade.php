@@ -30,7 +30,7 @@
                     <a href="#">Like</a>
                     <a href="#">Dislike</a>
                     @if(Auth::user() == $post->user)
-                        <a data-toggle="modal" data-target="#edit-modal" href="#">Edit</a>
+                        <a data-toggle="modal" data-target="#edit-modal" onclick="getModalBody()" href="#">Edit</a>
                         <a href="{{route('post.delete', ['post_id' => $post->id])}}">Delete</a>
                     @endif
                 </div>
@@ -53,12 +53,12 @@
                     <form>
                         <div class="form-group">
                             <label for="post-body">Edit your post</label>
-                            <textarea class="form-control" name="post-body" id="postbody" rows="4"></textarea>
+                            <textarea class="form-control" name="post-body" id="post-body" rows="4"></textarea>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                     <button type="button" class="btn btn-primary">Save changes</button>
                 </div>
             </div>
