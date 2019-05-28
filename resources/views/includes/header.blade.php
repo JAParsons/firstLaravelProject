@@ -26,6 +26,7 @@
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
         <li class="navbar-nav navbar-right">
+            <a class="nav-link" href="{{route('account')}}">Account</a>
             <a class="nav-link" href="{{route('logout')}}">Logout</a>
         </li>
     </div>
