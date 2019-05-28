@@ -21,7 +21,7 @@
         <div class="col-md-8  offset-md-2">
             <header><h3>People say words...</h3></header>
             @foreach($posts as $post)
-            <article class="post">
+            <article class="post" data-postid="{{$post->id}}">
                 <p>{{$post->body}}</p>
                 <div class="info">
                     Posted by {{$post->user->first_name}} {{$post->created_at->diffForHumans()}} <?php //{{$post->created_at->format('m/d/Y')}}?>
@@ -59,10 +59,15 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-primary" id="modal-save">Save changes</button>
                 </div>
             </div>
         </div>
     </div>
+
+<script> 
+    var token = '{{Session::token()}}'; //get session token for ajax call
+    var url = '{{route('edit')}}'; //get correct edit route for ajax call
+</script>
 
 @endsection

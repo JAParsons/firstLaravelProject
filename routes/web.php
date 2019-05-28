@@ -47,3 +47,8 @@ Route::get('/postdelete/{post_id}',[
     'as' => 'post.delete',
     'middleware' => 'auth'
 ]);
+
+Route::post('/edit',[
+    'uses' => 'PostController@postEditPost',
+    'as' => 'edit'
+]);
