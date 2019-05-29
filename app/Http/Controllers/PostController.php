@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\Like;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class PostController extends Controller
 {
@@ -58,5 +60,48 @@ class PostController extends Controller
         }
         $post->update();
         return response()->json(['new_body' => $post->body, 200]);
+    }
+
+    public function postLikePost(Request $request)
+    {
+        $post_id = $request['postId'];
+        $is_like = $request['isLike'] === 'true';
+        $update = false; //flag to keep track of if the like needs updating or save a new entry
+        $post = Post::find($post_id); //get id of the post
+        if(!$post) //if post was not found
+        {
+            return null;
+        }
+        $user = Auth::user(); //get the logged in user
+        $like = $user->likes()->where('post_id', $post_id)->first(); //get the current post like state from all the user's likes 
+        if($like)
+        {
+            $already_like = $like->like; //get if the post is currently liked or disliked by the user
+            $update = true;
+            if($already_like == $is_like)
+            {
+                $like->delete();
+                return null;
+            }
+        }
+        else
+        {
+            $like = new Like();
+        }
+
+        $like->like = $is_like;
+        $like->user_id = $user->id;
+        $like->post_id = $post->id;
+
+        if($update)
+        {
+            $like->update();
+        }
+        else
+        {
+            $like->save();
+        }
+
+        return null;
     }
 }

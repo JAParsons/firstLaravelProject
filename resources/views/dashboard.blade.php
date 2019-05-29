@@ -27,8 +27,8 @@
                     Posted by {{$post->user->first_name}} {{$post->created_at->diffForHumans()}} <?php //{{$post->created_at->format('m/d/Y')}}?>
                 </div>
                 <div class="interaction">
-                    <a href="#">Like</a>
-                    <a href="#">Dislike</a>
+                    <a href="#" class="like">{{Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 1 ? 'Liked' : 'Like' : 'Like'}}</a>
+                    <a href="#" class="like">{{Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 0 ? 'Disliked' : 'Dislike' : 'Dislike'}}</a>
                     @if(Auth::user() == $post->user)
                         <a data-toggle="modal" data-target="#edit-modal" onclick="getModalBody()" href="#">Edit</a>
                         <a href="{{route('post.delete', ['post_id' => $post->id])}}">Delete</a>
@@ -67,7 +67,8 @@
 
 <script> 
     var token = '{{Session::token()}}'; //get session token for ajax call
-    var url = '{{route('edit')}}'; //get correct edit route for ajax call
+    var urlEdit = '{{route('edit')}}'; //get correct edit route for ajax call
+    var urlLike = '{{route('like')}}'; //lead to like route
 </script>
 
 @endsection
