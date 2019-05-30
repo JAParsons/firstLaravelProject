@@ -1,5 +1,9 @@
 @extends('layouts.master')
 
+@section('title')
+    writeit
+@endsection
+
 @section('content')
 <br>
     @include('includes.message')

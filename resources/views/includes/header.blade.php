@@ -10,18 +10,22 @@
     <script src="{{URL::asset('js/main.js')}}"></script>
 
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="{{route('home')}}"><img src="{{URL::asset('/images/logo.png')}}" width="30" height="30" class="d-inline-block align-top" alt=""> writeit</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+        @if(Auth::user())
+        <a class="navbar-brand" href="{{route('dashboard')}}"><img src="{{URL::asset('/images/logo.png')}}" width="30" height="30" class="d-inline-block align-top" alt=""> writeit</a>
+        @else
+        <a class="navbar-brand" href="{{route('home')}}"><img src="{{URL::asset('/images/logo.png')}}" width="30" height="30" class="d-inline-block align-top" alt=""> writeit</a>
+        @endif
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-        </ul>
-        <li class="navbar-nav navbar-right">
-            <a class="nav-link" href="{{route('account')}}">Account</a>
-            <a class="nav-link" href="{{route('logout')}}">Logout</a>
-        </li>
-    </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto"></ul>
+            <li class="navbar-nav navbar-right">
+            @if(Auth::user())
+                <a class="navbar-brand" href="{{route('account')}}"><img src="https://lut.im/7JCpw12uUT/mY0Mb78SvSIcjvkf.png" width="30" height="30" class="rounded-circle d-inline-block align-top" alt="Account"> {{Auth::user()->first_name}}</a>
+                <a class="nav-link" href="{{route('logout')}}">Logout</a>
+            @else
+            <a class="nav-link" href="{{route('home')}}">Login/Register</a>
+            @endif
+            </li>
+        </div>
     </nav>
 </header>
