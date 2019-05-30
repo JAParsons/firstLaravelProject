@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title') <?php //define the title content to be inserted in to @yield('title') ?>
-    Welcome!
+    writeit: the knowledge exchange of the internet
 @endsection
 
 @section('content') <?php //define the body content to be inserted in to @yield('content') ?>
@@ -9,10 +9,10 @@
 @section('content')<?php //display any and all errors ?>
 @include('includes.message')
 
-    <br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br>
 
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-5">
             <h3>Register</h3>
             <form action="{{route('register')}}" method="post">
                 <div class="form-group"> <?php //add red outline to invalid form fields ?>
@@ -32,7 +32,7 @@
             </form>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-5 offset-md-2">
             <h3>Login</h3>
             <form action="{{route('login')}}" method="post">
                 <div class="form-group">
